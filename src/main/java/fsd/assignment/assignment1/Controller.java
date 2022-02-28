@@ -91,9 +91,16 @@ public class Controller {
         studentListView.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Student>() {
             @Override
             public void changed(ObservableValue<? extends Student> observable, Student oldValue, Student newValue) {
-                /* TODO: complete the code so that if a studId is selected then the changed()
+                /* complete the code so that if a studId is selected then the changed()
                          should ensure that the other fields related to the selected item appear at the bottom of the window
                 */
+                if (oldValue != null) {
+                    Student student = studentListView.getSelectionModel().getSelectedItem();
+                    yearStudyView.setText(student.getYearOfStudy());
+                    mod1View.setText(student.getModule1());
+                    mod2View.setText(student.getModule2());
+                    mod3View.setText(student.getModule3());
+                }
             }
         });
         //the setOnAction ensures that when a ChoiceBox is selected the getChoice() grabs the selected choice
@@ -101,43 +108,49 @@ public class Controller {
         mod2Choice.setOnAction(this::getChoice);
         mod3Choice.setOnAction(this::getChoice);
 
-        /* TODO: the array declared above for modChoices must be added to each Choicebox
+        /* the array declared above for modChoices must be added to each Choicebox
                  include the code here to addAll()
         */
-        //insert the code to addAll() the modChoices [] to each ChoiceBox here
+        mod1Choice.getItems().addAll(modChoices);
+        mod2Choice.getItems().addAll(modChoices);
+        mod3Choice.getItems().addAll(modChoices);
 
         //deleting a student
-        /* TODO: create a new listContextMenu -> defined above in the variables
+        /* create a new listContextMenu -> defined above in the variables
         */
-        listContextMenu = null;
+        listContextMenu = new ContextMenu();
         /* TODO: create a MenuItem object so that when the user right-clicks a studId
                  the word Delete? appears
          */
-        MenuItem deleteStudent = null;
+        MenuItem deleteStudent = new MenuItem("Delete?");
 
         deleteStudent.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                /* TODO: get the item to be deleted and call the deleteStudent()
+                /* get the item to be deleted and call the deleteStudent()
                  */
+                Student student = studentListView.getSelectionModel().getSelectedItem();
+                deleteStudent(student);
             }
         });
 
         //editing a student
         /* TODO: create a new listContextMenu -> defined above in the variables
          */
-        listContextMenu = null;
+        listContextMenu = new ContextMenu();
 
         /* TODO: create a MenuItem object so that when the user right-clicks a studId
                  the word Edit?? appears
          */
-        MenuItem editStudent = null;
+        MenuItem editStudent = new MenuItem("Edit??");
 
         editStudent.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 /* TODO: get the item to be edited and call the editStudent()
                 */
+                Student student = studentListView.getSelectionModel().getSelectedItem();
+                editStudent(student);
             }
         });
 
@@ -154,6 +167,12 @@ public class Controller {
                         /* TODO: ensure that the studentListView has studId's or not when
                                  the delete a student takes place
                          */
+                        super.updateItem(stu, empty);
+                        if(empty) {
+                            setText(null);
+                        } else {
+
+                        }
                     }//end of update()
                 };
                 //code included as part of the delete
