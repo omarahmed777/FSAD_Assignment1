@@ -2,7 +2,6 @@ package fsd.assignment.assignment1.datamodel;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.IOException;

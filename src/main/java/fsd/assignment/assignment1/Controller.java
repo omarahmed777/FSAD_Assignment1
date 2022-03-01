@@ -4,30 +4,16 @@ import fsd.assignment.assignment1.datamodel.Student;
 import fsd.assignment.assignment1.datamodel.StudentData;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.BorderPane;
-import javafx.stage.Stage;
 import javafx.util.Callback;
-
 import java.io.IOException;
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
 import java.util.Optional;
-import java.util.function.Predicate;
 
 public class Controller {
 
@@ -190,18 +176,7 @@ public class Controller {
 
         /* ensure that the studId's are sorted according to year of study in ascending order
          */
-        FilteredList<Student> filteredList = new FilteredList<>(StudentData.getInstance().getStudents(),
-                new Predicate<Student>() {
-                    @Override
-                    public boolean test(Student student) { return true; }
-                });
-        SortedList<Student> sortedByYear = new SortedList<Student>(filteredList,
-                new Comparator<Student>() {
-                    @Override
-                    public int compare(Student o1, Student o2) {
-                        return o1.getYearOfStudy().compareTo(o2.getYearOfStudy());
-                    }
-                });
+        SortedList<Student> sortedByYear = new SortedList<Student>(StudentData.getInstance().getStudents());
 
 
         /* step 1 - set items using the sorted list
