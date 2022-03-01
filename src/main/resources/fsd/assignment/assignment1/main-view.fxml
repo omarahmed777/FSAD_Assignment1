@@ -17,21 +17,7 @@
             <Label text="Module Option 3" GridPane.columnIndex="2" GridPane.rowIndex="2" />
             <ChoiceBox fx:id="mod3Choice" prefHeight="25.0" prefWidth="105.0" GridPane.columnIndex="3" GridPane.rowIndex="2" />
             <Button onAction="#addStudentData" prefHeight="25.0" prefWidth="69.0" text="Add..." GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <Label fx:id="validateStudent" />
-         <columnConstraints>
-            <ColumnConstraints />
-            <ColumnConstraints />
-            <ColumnConstraints />
-            <ColumnConstraints />
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-            <RowConstraints />
-         </rowConstraints>
+            <Label fx:id="validateStudent" GridPane.columnIndex="2" GridPane.rowIndex="3"/>
         </GridPane>
     </top>
 
