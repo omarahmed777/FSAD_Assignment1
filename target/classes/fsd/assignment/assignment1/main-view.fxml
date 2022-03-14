@@ -32,11 +32,9 @@
             </Label>
         </VBox>
     </left>
-    <!--This section is to show a student modules chosen when the studId is clicked-->
     <bottom>
         <VBox>
             <GridPane hgap="20">
-                <!--include the Labels as well as the fx:id's, see Controller class as well as image-->
                 <Label text="Year of Study" GridPane.columnIndex="0" GridPane.rowIndex="0" />
                 <Label fx:id="yearStudyView" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
                 <Label text="Module Option 1" GridPane.columnIndex="1" GridPane.rowIndex="0" />

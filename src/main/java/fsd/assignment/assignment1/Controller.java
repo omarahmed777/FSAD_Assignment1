@@ -13,6 +13,7 @@ import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.util.Callback;
 import java.io.IOException;
+import java.util.Comparator;
 import java.util.Optional;
 
 public class Controller {
@@ -176,7 +177,13 @@ public class Controller {
 
         /* ensure that the studId's are sorted according to year of study in ascending order
          */
-        SortedList<Student> sortedByYear = new SortedList<Student>(StudentData.getInstance().getStudents());
+        SortedList<Student> sortedByYear = new SortedList<Student>(StudentData.getInstance().getStudents(),
+                new Comparator<Student>() {
+                    @Override
+                    public int compare(Student o1, Student o2) {
+                        return o1.getYearOfStudy().compareTo(o2.getYearOfStudy());
+                    }
+                });
 
 
         /* step 1 - set items using the sorted list
